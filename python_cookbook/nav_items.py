@@ -6,8 +6,8 @@ def get_nav_items():
 	nav_items = collections.defaultdict(list)
 	for i, r in enumerate(Recipes):
 	    if r.section:
-	        nav_items[r.section.lower()].append({
-	        "title":r.title.lower(),
+	        nav_items[r.section].append({
+	        "title":r.title,
 	        "id":r.id
 	        })
 	nav_items = [{"section":x,"recipes":y} for x,y in nav_items.items()]

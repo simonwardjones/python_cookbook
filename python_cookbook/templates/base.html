@@ -40,10 +40,10 @@
 
            {% for nav_item in nav_items %}
             <li class="panel">
-              <a data-toggle="collapse" data-parent="#accordion1" href="#{{ nav_item.section }}">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#{{loop.index}}">
                 {{ nav_item.section }}
               </a>
-                <ul id="{{ nav_item.section }}" class="collapse">
+                <ul id="{{loop.index}}" class="collapse">
             {% for recipe in nav_item.recipes %}
               <li>
                   <a href="/recipes/{{ recipe.id }}">{{ recipe.title }}</a>

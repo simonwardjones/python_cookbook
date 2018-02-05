@@ -49,11 +49,13 @@ with create_app(config).app_context():
                     author = 'Simon Ward-Jones'
 
                 title = os.path.splitext(file)[0]
-                recipe = Recipe(title=title,
-                                author=author,
+                title = title.replace('-',' ')
+                title = title.replace('_',' ')
+                recipe = Recipe(title=title.capitalize(),
+                                author=author.title(),
                                 snippet=snippet,
                                 description=description,
-                                section=section)
+                                section=section.title())
 
                 try:
                     db.session.add(recipe)

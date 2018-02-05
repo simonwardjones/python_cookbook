@@ -31,14 +31,13 @@ def list():
     form = SearchForm()
     if request.method == 'POST':
         if form.validate():
-            print('Search Hit',request.method, form.query.data)
+            print('Search Hit', request.method, form.query.data)
             recipes = Recipe.query.whoosh_search(form.query.data).all()
-            render_template("list.html", recipes=recipes, 
+            render_template("list.html", recipes=recipes,
                             next_page_token=next_page_token, form=form)
         else:
-            return render_template("list.html", recipes=recipes, 
+            return render_template("list.html", recipes=recipes,
                                    next_page_token=next_page_token, form=form)
-
 
     return render_template(
         "list.html",
@@ -58,9 +57,9 @@ def snippet2(id):
     recipe = Recipe.query.get(id)
 
     return jsonify({'title': recipe.title,
-                    'author':recipe.author,
-                    'snippet':recipe.snippet})
+                    'author': recipe.author,
+                    'snippet': recipe.snippet})
 
 
 class SearchForm(FlaskForm):
-    query = StringField('Search',validators=[InputRequired()])
+    query = StringField('Search', validators=[InputRequired()])
