@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Python Cookbook</h3>
+<div class="row mt-3">
+{% for recipe in recipes %}
+<div class="col-md-6">
+    <div class="media" style="margin: 5px;">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="http://placekitten.com/g/128/192" alt="..." height="80px">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/recipes/{{recipe.id}}">{{recipe.title}}</a></h4>
+        {{recipe.description}}
+      </div>
+    </div>
+</div>
+
+
+{% else %}
+<p>No Recipes found</p>
+{% endfor %}
+</div>
+{% if next_page_token %}
+<nav>
+  <ul class="pager">
+    <li><a href="?page_token={{next_page_token}}">More</a></li>
+  </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

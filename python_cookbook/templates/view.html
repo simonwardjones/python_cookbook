@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>{% if recipe.section %}
+{{recipe.section}}
+{% endif %}</h3>
+
+<div class="media">
+  {# [START recipe_image] #}
+  <div class="media-left">
+    {% if recipe.imageUrl %}
+      <img class="recipe-image" src="{{recipe.imageUrl}}">
+    {% else %}
+      <img class="recipe-image" src="http://placekitten.com/g/128/192" height=100>
+    {% endif %}
+  </div>
+  {# [END recipe_image] #}
+  <div class="media-body">
+    <h4 class="recipe-title">
+      {{recipe.title}}
+      <!-- <small>{{recipe.added_time}}</small> -->
+    </h4>
+    <h5 class="recipe-author"><i>By {{recipe.author|default('Unknown', True)}}</i></h5>
+    {% if recipe.description %}
+    <p>{{ recipe.description}}</p>
+    {% endif %}
+    <pre><code class="lang-python">{{recipe.snippet}}</code></pre>
+  </div>
+</div>
+
+{% endblock %}
+
