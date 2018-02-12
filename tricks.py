@@ -57,57 +57,6 @@ dfFromPickle = pickle.loads(response)
 print(dfFromPickle.shape)
 
 
-
-
-
-
-HELPERS
-------
-
-import utils.carlosUtils as cu
-# Renew the lease
-# Set up connections to Viscosity
-vpnNameAWS = 'Beamly AWS VPN';
-cu.viscosityConnect(vpnNameAWS);
-
-# Get the AWS credentials
-s3.awsauth();
-
-# Copy the credentials to the clipboard
-cu.awsCredentialsToClipboard();
-
-# Back to Frankfurt
-cu.viscosityConnect();
-
-
-
-
-
-PYTHON 
-------
-
-Get a list of the functions contained in a module:
-	import utils.adformUtils as adform
-	dir(adform)
-
-# Get the classes manually
-a = dfPurchases[['CookieID', 'orderID', 'yyyymmdd']]
-a.iloc[0,0].__class__
-a.iloc[0,1].__class__
-a.iloc[0,2].__class__
-b = dfTPminimal[['CookieID', 'orderID', 'yyyymmdd']]
-b.iloc[0,0].__class__
-b.iloc[0,1].__class__
-b.iloc[0,2].__class__
-
-
-Timing processes (elapsed time) :
-	startTime   = time.time();
-	# do some magic
-    endTime     = time.time();
-    elapsedTime = endTime - startTime;
-    print ('...completed {:.2f} sec!'.format(elapsedTime));
-
 # Mutiprocessing. use MP with a function that accepts several arguments, being the 1st one 
 # the ONLY one that changes
 	import multiprocessing as mp
@@ -156,11 +105,6 @@ Timing processes (elapsed time) :
 
 
 
-Reload modules:
-	import imp
-	imp.reload(my.module)
-
-
 Exceptions:
     # Couldn't love PANDAS more...
     try:
@@ -168,42 +112,6 @@ Exceptions:
     except Exception as e:
         dfAdform = pd.DataFrame()
         print('Cannot read {}'.format(adformPath))
-
-
-Unnest a list (tempList):
-	fieldValuesList = [item for sublist in tempList for item in sublist]
-
-Remove an item (str) from a list (of str):
-	a = ['paco', 'manolo']
-	a.remove('paco')
-	print(a)
-
-
-Create a dictionary from two lists:
-	a = ['a', 'b']
-	b = ['c', 'd']
-	c = dict(zip(a,b))
-	c['a']
- 
-Get the keys of a dictionary:
-	listOfKeys = list(currentImpression.keys())
-
-Merge two lists:
-	newList = [x for t in zip(listA,listB) for x in t]
-
-String concatenate:
-	a = [x + '_' + currentLagVar for x in varsToKeep]
-
-This one is really cool (very Pythonic):
-	a = ['d', 'h', 'g']
-	b = ['1', '2', '3']
-	c = [*map(str.__add__, a, b)]
-
-
-Iterate through a list of files in a folder and show a progress bar as they are read:
-	import tqdm as tqdm
-	for img in tqdm(os.listdir(TRAIN_DIR)):
-		#do stuff
 
 
 Find values in a list:
@@ -221,29 +129,6 @@ Types. perform differenct actions based on the datatype:
 		else:
 			...
 
-Pause Python:
-	import time
-	time.sleep(5.5)
-
-
-MAPS
-# here 'len' is the actual method that we are passing
-name_lengths = map(len, ["Mary", "Isla", "Sam"])
-print(list(name_lengths))
-# or we can pass our preferred method via lamdba
-squares = map(lambda x: x * x, [0, 1, 2, 3, 4])
-
-# Replace strings
-pickleFileName = [*map(lambda x: x.replace('.csv.gz', '_Summary.pickle'), srcFileList)]
-
-# Retain the second returned value using maps
-justFileNames = [*map(lambda x: os.path.split(x)[1],  srcFileList)];
-
-
-Apply a function to a list and get the result also as a list
-	cleanList = lambda x: str.replace(x, " ", "_").lower()
-	a = list(map(cleanList, tempColNames))
-
 
 Reduce:
 	Reduce takes a function and a collection of items.
@@ -256,6 +141,8 @@ Copy and paste to/from the clipboard:
 	import pyperclip
 	pyperclip.copy('Hello world!')
 	pyperclip.paste()
+
+# simon - i use clipboard module as it seems easier to remember
 
 Delete a folder:
 	metaZipFolder  = 'data/raw/adform/masterdataset';

@@ -1,4 +1,4 @@
-""" 
+"""
 Section:
     time
 
@@ -13,7 +13,9 @@ Tags:
 """
 import time
 
+
 class Timer:
+
     def __init__(self):
         self.start = time.time()
         self.end = time.time()
@@ -24,7 +26,6 @@ class Timer:
         """
         self.start = time.time()
         self._is_running = True
-
 
     def reset(self):
         """reset the time
@@ -58,12 +59,12 @@ class Timer:
         '''
         return time.time() - self.start
 
-    def get_time_hhmmss(self,duration):
+    def get_time_hhmmss(self, duration):
         """Returns the duration in HH:mm:ss (Does not reset the counter).
-        
+
         Returns:
             TYPE: Description
         """
-        m, s = divmod(duration, 60) 
+        m, s = divmod(duration, 60)
         h, m = divmod(m, 60)
         return f'{int(h):0>2}:{int(m):0>2}:{s:05.4f}'

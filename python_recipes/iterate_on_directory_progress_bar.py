@@ -1,4 +1,4 @@
-""" 
+"""
 Section:
     progress bar
 
@@ -18,4 +18,4 @@ import time
 
 for file in tqdm.tqdm(os.listdir('.')):
     # here you might actually want to do more than sleep
-    time.sleep(0.5)        
+    time.sleep(0.5)

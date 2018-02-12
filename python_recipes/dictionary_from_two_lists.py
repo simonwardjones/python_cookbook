@@ -12,9 +12,9 @@ Tags:
     list, dictionary
 """
 
-words = ['zebra','bear','dog']
+words = ['zebra', 'bear', 'dog']
 counts = [12, 43, 54]
-count_look_up_dict = dict(zip(words,counts))
+count_look_up_dict = dict(zip(words, counts))
 
 count_look_up_dict['zebra']
 # {'bear': 43, 'dog': 54, 'zebra': 12}

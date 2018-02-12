@@ -35,7 +35,7 @@ app = create_app(config)
 #                 writer.update_document(**index_attrs)
 
 # rebuild_index(Recipe,app)
-
+print('running')
 with app.app_context():
     Recipes = Recipe.query.all()
     for i, r in enumerate(Recipes):
