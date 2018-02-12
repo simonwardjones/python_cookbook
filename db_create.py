@@ -15,7 +15,9 @@ with create_app(config).app_context():
         print('DB exists')
 
     for file in os.listdir(config.PYTHON_RECIPE_FOLDER):
+
         if os.path.splitext(file)[1] == ".py":
+            print(file)
             with open(os.path.join(config.PYTHON_RECIPE_FOLDER, file)) as f:
                 raw_text = f.read()
                 mod = ast.parse(raw_text)
@@ -62,20 +64,20 @@ with create_app(config).app_context():
                 snippet = raw_text
                 author = 'Simon Ward-Jones'
 
-                title = os.path.splitext(file)[0]
-                title = title.replace('-', ' ')
-                title = title.replace('_', ' ')
-                recipe = Recipe(title=title.capitalize(),
-                                author=author.title(),
-                                snippet=snippet,
-                                description=description,
-                                section=section.title())
+            title = os.path.splitext(file)[0]
+            title = title.replace('-', ' ')
+            title = title.replace('_', ' ')
+            recipe = Recipe(title=title.capitalize(),
+                            author=author.title(),
+                            snippet=snippet,
+                            description=description,
+                            section=section.title())
 
-                try:
-                    db.session.add(recipe)
-                    db.session.commit()
-                    print(title)
-                except Exception as ex:
-                    db.session.rollback()
+            try:
+                db.session.add(recipe)
+                db.session.commit()
+                print(title)
+            except Exception as ex:
+                db.session.rollback()
 
-                    print('Skipped: ' + title)
+                print('Skipped: ' + title)
