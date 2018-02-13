@@ -21,7 +21,7 @@ Github: Data_science_delivered
 Update your libraries every so often:
  pip3 install pandas --upgrade
 
- 
+
  >> Tommi Jaakkola from MIT works towards interpretable machine learning models
 
 
@@ -38,7 +38,7 @@ from utils import *
 AWS Sagemaker
 -------------
 
-Read a pickle file from S3 (there's only one file in that bucket):
+# Read a pickle file from S3 (there's only one file in that bucket)
 
 import boto3
 
@@ -57,7 +57,7 @@ dfFromPickle = pickle.loads(response)
 print(dfFromPickle.shape)
 
 
-# Mutiprocessing. use MP with a function that accepts several arguments, being the 1st one 
+# Mutiprocessing. use MP with a function that accepts several arguments, being the 1st one
 # the ONLY one that changes
 	import multiprocessing as mp
 	from functools import partial
@@ -67,7 +67,7 @@ print(dfFromPickle.shape)
 		print('A -> {},B -> {},C -> {},D -> {}'.format(a,b,c,d))
 		return a-100
 
-	cores      = mp.cpu_count() 
+	cores      = mp.cpu_count()
 	maxCores   = cores-1
 	pool       = mp.Pool(maxCores)
 	# use partial to fix the arguments that don't change
@@ -88,7 +88,7 @@ print(dfFromPickle.shape)
 	df = pd.DataFrame(np.random.random_sample((50000,1)), columns=['TEST'])
 	df_split = np.array_split(df, 100)
 
-	cores      = mp.cpu_count() 
+	cores      = mp.cpu_count()
 	maxCores   = cores-1
 	pool       = mp.Pool(maxCores)
 	# use partial to fix the arguments that don't change
@@ -130,54 +130,51 @@ Types. perform differenct actions based on the datatype:
 			...
 
 
-Reduce:
-	Reduce takes a function and a collection of items.
-	It returns a value that is created by combining the items.
-	from functools import 
-	sum = reduce(lambda a, x: a + x, [0, 1, 2, 3, 4])
-
-
-Copy and paste to/from the clipboard:
-	import pyperclip
-	pyperclip.copy('Hello world!')
-	pyperclip.paste()
-
-# simon - i use clipboard module as it seems easier to remember
-
-Delete a folder:
-	metaZipFolder  = 'data/raw/adform/masterdataset';
-	metaTempFolder = '/Users/carlos.aguilar/Documents/Beamly/Personalisation/adForm data/metaTemp';
-	if os.path.exists(metaTempFolder):
-		os.system('rm -rf "{}"'.format(metaTempFolder))
-
-
-Wait for a process to finish:
-	from subprocess import check_output
-    connectionStr = ''' osascript -e 'tell application "Viscosity" to connect "{}"' '''.format(vpnName);    
-    out = check_output(connectionStr, shell=true);
-
-
-Find the index of a value in a list:
-	thisString = 'Impression_74350.csv.gz'
-	idx = fileName.index(thisString)
-	fileName[idx]
-If the list contains the value several times:
-	mainIDx    = [i for i,x in enumerate(folderName) if x == mainFolder];
 
 
 
 
-Compare lists (using sets):
-	engineers   = set(['John', 'Jane', 'Jack', 'Janice'])
-	programmers = set(['Jack', 'Sam', 'Susan', 'Janice'])
 
-	# missing in programmers
-	diffSets = list(engineers - programmers)
-	# missing in engineers
-	diffSetsB = list(programmers - engineerss)
 
-	# easy (gives 2)
-	set([2,3,4])-set([3,4,5])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -185,7 +182,7 @@ PANDAS/DATAFRAMES
 ----------------------------
 
 Create a pivot table with Pandas:
-	dfPurchasesFiltPerDay = pd.pivot_table(dfPurchasesFilt, values='productCount', 
+	dfPurchasesFiltPerDay = pd.pivot_table(dfPurchasesFilt, values='productCount',
 		index=['productName'], columns=['hour'], aggfunc=np.mean)
 
 
@@ -224,7 +221,7 @@ To visualise dataframes a bit better:
 Equal size DF:
 	df = pd.DataFrame([1,2,3,4,5,6,7,8,9,10,11], columns=['TEST'])
 	df_split = np.array_split(df, 3)
-	Gives a list with the chunked DF 
+	Gives a list with the chunked DF
 
 Skip rows when reading a dataframe:
 train = pd.read_csv('../input/train.csv', usecols=[1,2,3,4], dtype=dtypes, parse_dates=['date'],
@@ -246,7 +243,7 @@ Get a percentage in one go:
 	cookieRatio = dfCookies.value_counts()/dfCookies.count();
 
 Find and replace backslashes:
-(Backslashes use backslash so if we are dealing with functions that can accept a regex as input, let's make sure 
+(Backslashes use backslash so if we are dealing with functions that can accept a regex as input, let's make sure
 we explicitily pass the object as a regex one)
 	b = r'\\'
 	a = df.PublisherURL.str.contains(b)
@@ -312,7 +309,7 @@ Iterate through datatypes
 	for iVar, iType in df.dtypes.iteritems():
 		print(iType)
 
-Also, a list with the selected dtype:	
+Also, a list with the selected dtype:
 	objTypes = df.select_dtypes(include=['object']).keys().tolist()
 
 
@@ -334,7 +331,7 @@ Make a percentage count based on an index:
 
 Convert the row of a DF into a list:
 	avgValues     = df.ix[0].values.tolist();
-	
+
 Reshuffle a DF (avoid time/reading effects):
 	import numpy as np
 	np.random.seed(0)
@@ -368,7 +365,7 @@ Toy DFs:
 
 
 	d = [{'col1': 12, 'col2': 17}, {'col1': 2, 'col2': 1}]
-	df = pd.DataFrame(data=d)  
+	df = pd.DataFrame(data=d)
 
 
 Create vars on-the-fly
@@ -386,15 +383,15 @@ Concatenate columns of a DF into a new one:
 Get the column names of a DF:
 	Either 'keys()' or tickers = df.columns.values.tolist() to get them on a list
 
-Add columns in a DF where we want to keep the date index.In this case, 
+Add columns in a DF where we want to keep the date index.In this case,
 we read every 'df' and add it to main_df keeping the dates as an index. The gaps will be filled with Nan
 Replace the Nan's with zeroes
 	df.fillna(0, inplace=True)
 
 Add cols to dataframe:
-	
+
 	dfClicksCI['iNodeID'] = [ 'c' + str(idx) for idx in range(0, numClicks)]
-	
+
 Size of a dataframe: DataFrame.shape
 nR, nC = df.shape
 
@@ -406,7 +403,7 @@ Set up PANDAS options at the beginning of the code
 Group values bigger than zero and group them:
 	a = data['A']>0
 	b = data['B']>0
-	data.groupby([a,b]).count() 
+	data.groupby([a,b]).count()
 
 
 Filter by timestamp:
@@ -449,12 +446,12 @@ sqlQuery = '''select
     C.minSD,C.maxSD,
     sum(A.Value)     as totalValue
     from df as A
-    inner join (select B.ID,     
+    inner join (select B.ID,
                 min(B.StartDate) as minSD,
-                max(B.EndDate)   as maxSD 
+                max(B.EndDate)   as maxSD
                 from df as B
                 group by 1) as C
-        on A.ID = C.ID    
+        on A.ID = C.ID
     group by 1,2,3,4,5,6
     '''
 # Same with pandas (more on groupby)
@@ -485,7 +482,7 @@ Read and filter a csv file with PD:
 	# Read the csv file and get the valid dates
 	dfTrain = pd.read_csv(csvPath,
 			parse_dates=['date'],
-			low_memory=False, 
+			low_memory=False,
 			dtype={'id':np.uint32, 'store_nbr':np.uint8, 'item_nbr': np.uint32,
 			'onpromotion': np.bool, 'unit_sales': np.float32});
 
@@ -532,7 +529,7 @@ Change from integer to float:
 	# clean the item_price column and transform it in a float
 	prices = [float(value[1 : -1]) for value in chipo.item_price]
 	# reassign the column with the cleaned prices
-	chipo.item_price = prices 
+	chipo.item_price = prices
 
 Change from integer to categorical:
 	char_cabin = titanic_train["Cabin"].astype(str)    # Convert cabin to str
@@ -540,7 +537,7 @@ Change from integer to categorical:
 	titanic_train["Cabin"] = pd.Categorical(new_Cabin)  # Save the new cabin var
 
 
-# ...or cast after reading 
+# ...or cast after reading
 df["age"] = df["age"].astype(np.int16)
 
 # Cast from float to string removing the decimals
@@ -548,7 +545,7 @@ dfTPminimal['orderID_str'] = dfTPminimal['orderID'].astype(int).astype(str)
 
 
 Categorical/Nominal variables:
-# (opt A) 
+# (opt A)
 # cast a string into numbers and ignore the nulls
 # Using Apply
 df['bionic_campaign_id'] = df['bionic_campaign_id'].apply(pd.to_numeric, errors='coerce')
@@ -557,7 +554,7 @@ df['bionic_campaign_id'] = pd.to_numeric(df['bionic_campaign_id'], downcast='int
 # (opt B)
 for feature in combined_set.columns: # Loop through all columns in the dataframe
     if combined_set[feature].dtype == 'object': # Only apply for columns with categorical strings
-        combined_set[feature] = pd.Categorical(combined_set[feature]).codes # Replace strings with an integer 
+        combined_set[feature] = pd.Categorical(combined_set[feature]).codes # Replace strings with an integer
 
 
 # create a column of percentages
@@ -599,7 +596,7 @@ Read from a html flask web a json string:
 
 
 Pandas timestamps as strings:
-#timestamp   
+#timestamp
 df['thisTimeStamp'] = df['yyyy_mm_dd'].apply(lambda x: x.strftime('%Y-%m-%d %H:%M:%S'));
 Strings to Pandas timestamp:
 pd.to_datetime(thisCookieID_Clicks['Timestamp'], format='%Y-%m-%d %H:%M:%S')
@@ -670,8 +667,8 @@ from dateutil.relativedelta import relativedelta
 from datetime import date, timedelta
 
 
-df = pd.DataFrame([{'unit_sales' :1, 'date' : pd.Timestamp('20130103'), 'store_nbr' : 2, 'onpromo': True }, 
-				  {'unit_sales' : 7, 'date' : pd.Timestamp('20130106'), 'store_nbr' : 2, 'onpromo': False }, 
+df = pd.DataFrame([{'unit_sales' :1, 'date' : pd.Timestamp('20130103'), 'store_nbr' : 2, 'onpromo': True },
+				  {'unit_sales' : 7, 'date' : pd.Timestamp('20130106'), 'store_nbr' : 2, 'onpromo': False },
 				  {'unit_sales' : 2, 'date' : pd.Timestamp('20130102'), 'store_nbr' : 1, 'onpromo': True  }])
 
 varsToKeep = ['unit_sales', 'date', 'store_nbr', 'onpromo'];
@@ -684,7 +681,7 @@ for currentLag in range(1,28+1):
 	allVarsToKeep     = varsToKeep
 	for iVar in varsToKeepRightDF:
 		allVarsToKeep.append(iVar)
-	# Set the current rightKeys	
+	# Set the current rightKeys
 	rightKeys = [currentLagVar, 'store_nbr'];
 	dfTemp    = pd.merge(df, df, how='left', left_on=leftKeys, right_on=rightKeys,  suffixes=('', '_' + currentLagVar), copy=True);
 	# Update the DF
@@ -750,7 +747,7 @@ a bit more complex. Dates to string in a required format and then unique and to 
 	listOfDates = dfCITemp['date'].ix[idxValid].dt.strftime('%Y_%m_%d').unique().tolist()
 
 Convert from standard date format to simple numbers in a dataframe
-	import matplotlib.dates   as mdates	
+	import matplotlib.dates   as mdates
 	df['Date'] = df['Date'].map(mdates.date2num);
 
 # get the following 16 days...
@@ -772,7 +769,7 @@ Save DF to Excel:
 Read DF from excel: df.read_excel();
 
 From list of lists to a simple list:
-	from itertools import chain	
+	from itertools import chain
 	listOfTickers = [['AAPL', 'MSFT', 'TSCO.L', 'SBRY', 'BP', 'REP.MC']]
 	categories = list(chain.from_iterable(listOfTickers));
 
@@ -789,12 +786,12 @@ Use a progress bar in python:
 
 
 
-dir() – will display the defined symbols. Eg: >>>dir(str) – will only display the defined symbols. 
+dir() – will display the defined symbols. Eg: >>>dir(str) – will only display the defined symbols.
 Built-in functions such as max(), min(), filter(), map(), etc is not apparent immediately as they are
 available as part of standard module. dir(__builtins ) to view them.
 
-zip() function- it will take multiple lists say list1, list2, etc and transform them into a single list of 
-tuples by taking the corresponding elements of the lists that are passed as parameters. 
+zip() function- it will take multiple lists say list1, list2, etc and transform them into a single list of
+tuples by taking the corresponding elements of the lists that are passed as parameters.
 
 Every object holds unique id and it can be obtained by using id() method. Eg: id(obj-name) will return unique id of the given object.
 
@@ -830,7 +827,7 @@ Bokeh version:
 RegEx remainder:
 + = match 1 or more
 ? = match 0 or 1 repetitions.
-* = match 0 or MORE repetitions	  
+* = match 0 or MORE repetitions
 . = Any character except a new line
 
 RegEx: remove one or more blanks by just one blank
@@ -976,7 +973,7 @@ PLOTTING
 Use seaborn to plot a heat map
 
 import seaborn as sns
-dfPurchasesFiltPerDay = pd.pivot_table(dfPurchasesFilt, values='productCount', 
+dfPurchasesFiltPerDay = pd.pivot_table(dfPurchasesFilt, values='productCount',
     index=['productName'], columns=['hour'], aggfunc=np.mean)
 # Draw a heatmap with the numeric values in each cell
 f, ax = plt.subplots(figsize=(9, 6))
@@ -1025,7 +1022,7 @@ Scatterplot colouring by a third variable
 	            cmap="coolwarm",
 	            c=training_targets["median_house_value"] / training_targets["median_house_value"].max())
 
-	# drop the axis by using _ 
+	# drop the axis by using _
 	_ = plt.plot()
 
 
@@ -1118,7 +1115,7 @@ if pythonModsRoot not in sys.path:
 
 
 Implicitly, by opening files with the with statement. The close() method will be c
-alled when the end of the with block is reached, even in the event of 
+alled when the end of the with block is reached, even in the event of
 abnormal termination (from an exception).
 	with open("data.txt") as in_file:
 		data = in_file.read()
@@ -1203,14 +1200,14 @@ class Animal:
     def __init__(self,name,life_span):
         self.name = name
         self.life_span = life_span
-        
+
     def say_hi():
         print('Hi Carlos')
-        
+
 
     def __str__(self):
         return self.name
-        
+
     def __repr__(self):
         return u'<\N{WHITE SMILING FACE} AnimalClass {0} >'.format(self.name)
 
@@ -1293,7 +1290,7 @@ del promo_2017_test, promo_2017_train
 # Set the date as columns and if the sales are not found, set them to zero
 df_2017 = df_2017.set_index(
     ["store_nbr", "item_nbr", "date"])[["unit_sales"]].unstack(
-        level=-1).fillna(0) 
+        level=-1).fillna(0)
 df_2017.columns = df_2017.columns.get_level_values(1)
 
 # Reindex the items as in the training set
@@ -1320,15 +1317,15 @@ help(moduleName)
 PIP (Python Package Index)
 
 Pip normalyy installs in the systems package folder, to tell PIP to install in the personal user folder, simply add the modifier
-pip3 install --user PACKAGENAME 
-Also, we can run PIP from Python as 
-python -m pip3 install --user PACKAGENAME 
+pip3 install --user PACKAGENAME
+Also, we can run PIP from Python as
+python -m pip3 install --user PACKAGENAME
 
 List of the installed packages:
 
 pip3 list
 
-pip3 unistall PACKAGENAME 
+pip3 unistall PACKAGENAME
 
 Upgrade a package:
 pip3 install PACKAGENAME --Upgrade
@@ -1356,16 +1353,16 @@ print(sys.path)
 
 Conventions for modules: should not start with numbers or capitals.
 
-To add a package to the list of Python packages, 
+To add a package to the list of Python packages,
 sys.append(folderName)
 
 
-Folders that don't contain an __init__.py file are 'namespace packages'. Namespace packages can be useful 
-for a large collection of loosely-related packages 
+Folders that don't contain an __init__.py file are 'namespace packages'. Namespace packages can be useful
+for a large collection of loosely-related packages
 (such as a large corpus of client libraries for multiple products from a single company). Each sub-package can now be separately installed, used, and versioned.
 
 
-Relative import of a package with the trick: 
+Relative import of a package with the trick:
 import .localModule
 
 Absolute imports:
@@ -1420,8 +1417,8 @@ My usual:
 git add -A
 git commit -m "this is the message"
 git push origin master
- 
-To include code from other repositories, use git pull 
+
+To include code from other repositories, use git pull
 
 More on GIT: https://devguide.python.org/gitbootcamp/
 
@@ -1455,7 +1452,7 @@ sphinx-apidoc -o docs example
 (sphinx-apidoc -o docs pandas -f)
 
 emacs conf.py
-In the conf.py file add 
+In the conf.py file add
 	import os
 	import sys
 	sys.path.append(os.path.abspath('..'))
