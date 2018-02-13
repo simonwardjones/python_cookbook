@@ -4,7 +4,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
-import flask_whooshalchemy as whooshalchemy
+from .flask_whooshalchemy import whoosh_index
 import config
 
 
@@ -50,10 +50,8 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         See logs for full stacktrace.
         """.format(e), 500
 
-
     # Update the index
     from .model import Recipe
-    whooshalchemy.whoosh_index(app, Recipe)
-    
-    return app
+    whoosh_index(app, Recipe)
 
+    return app
