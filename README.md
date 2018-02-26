@@ -47,6 +47,5 @@ Python recipes
 │   ├── timer.py
 │   └── timer_click.py
 ├── requirements.txt
-├── setup.py
-└── tricks.py
+└── setup.py
 ```
