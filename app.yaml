@@ -11,5 +11,10 @@ manual_scaling:
   instances: 1
 resources:
   cpu: 1
-  memory_gb: 0.18
+  memory_gb: 0.6
   disk_size_gb: 10
+
+handlers:
+- url: /favicon\.ico
+  static_files: static/favicon.ico
+  upload: static/favicon\.ico
