@@ -9,7 +9,7 @@ logging.basicConfig(
     datefmt="%m/%d/%YT%H:%M:%S.%f")
 
 
-class loop():
+class Loop():
     def __init__(self, interval, function, args=(), kwargs={}):
         self.stop_event = threading.Event()
         self.function = function
@@ -54,7 +54,7 @@ def example_func(name, height=3):
 
 
 if __name__ == '__main__':
-    simon_loop = loop(interval=1,
+    simon_loop = Loop(interval=1,
                       function=example_func,
                       args=('simon',),
                       kwargs={"height": 44}
