@@ -46,8 +46,7 @@ def cli(countdown=None):
         else:
             while timer._is_running:
                 if timer.get_elapsed() < 2:
-                    elapsed = timer.get_time_hhmmss(
-                        countdown - timer.get_elapsed())
+                    elapsed = timer.get_time_hhmmss(timer.get_elapsed())
                     print(f"And They are off!! {elapsed}",
                           end='\r',
                           flush=True)
