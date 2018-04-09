@@ -46,3 +46,6 @@ dataframe[dataframe['animal'].isin(filter_list)]
 
 # Alternatively we could use a map on the series
 dataframe[dataframe['animal'].map(lambda x: x in filter_list)]
+
+# or even this
+dataframe.query('animal in '+ str(filter_list))
