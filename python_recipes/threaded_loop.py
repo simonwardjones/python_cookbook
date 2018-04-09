@@ -1,3 +1,17 @@
+"""
+Section:
+    Threading
+
+Author:
+    Simon Ward-Jones
+
+Description:
+    Repeatedly run a function on thread
+
+Tags:
+    threading , loop, setInterval
+"""
+
 import threading
 from datetime import datetime
 import logging
