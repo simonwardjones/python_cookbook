@@ -13,9 +13,9 @@ Tags:
 
 """
 
-from flask import Blueprint, jsonify, current_app, redirect, \
-    render_template, request, url_for
-from .model import Recipe, db
+from flask import Blueprint, jsonify, \
+    render_template, request
+from .model import Recipe
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired

@@ -11,9 +11,8 @@ Description:
 Tags:
     os, subprocess
 """
-import os
 import subprocess
-from subprocess import run, check_output
+from subprocess import run
 
 string_to_do = ["sleep 1; echo 'A wild Zebra!!'"]
 

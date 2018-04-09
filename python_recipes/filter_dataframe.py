@@ -41,11 +41,11 @@ dataframe = pd.DataFrame({
 dataframe.replace(to_replace='', value=np.nan, inplace=True)
 
 # We can filter the dataframe by specific values in a specific column
-filter_list = ['lion','rhino']
+filter_list = ['lion', 'rhino']
 dataframe[dataframe['animal'].isin(filter_list)]
 
 # Alternatively we could use a map on the series
 dataframe[dataframe['animal'].map(lambda x: x in filter_list)]
 
 # or even this
-dataframe.query('animal in '+ str(filter_list))
+dataframe.query('animal in ' + str(filter_list))
