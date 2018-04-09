@@ -39,4 +39,4 @@ print('running')
 with app.app_context():
     Recipes = Recipe.query.all()
     for i, r in enumerate(Recipes):
-        print(str(i+1), r.title, r.snippet)
+        print(str(i + 1), r.title, r.snippet)
