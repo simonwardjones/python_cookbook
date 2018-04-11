@@ -1,8 +1,10 @@
+import json
 import os.path
 from python_cookbook import db, create_app
 from python_cookbook.model import Recipe
+from python_cookbook.nav_items import get_nav_items
 import config
-import flask_whooshalchemy as whooshalchemy
+import python_cookbook.flask_whooshalchemy as whooshalchemy
 
 app = create_app(config)
 
@@ -36,7 +38,10 @@ app = create_app(config)
 
 # rebuild_index(Recipe,app)
 print('running')
+# with app.app_context():
+#     Recipes = Recipe.query.all()
+#     for i, r in enumerate(Recipes):
+#         print(str(i + 1), r.title, r.snippet)
+
 with app.app_context():
-    Recipes = Recipe.query.all()
-    for i, r in enumerate(Recipes):
-        print(str(i + 1), r.title, r.snippet)
+    print(json.dumps(get_nav_items(), indent=4))

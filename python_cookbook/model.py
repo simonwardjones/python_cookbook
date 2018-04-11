@@ -31,4 +31,3 @@ class Recipe(db.Model):
         self.snippet = snippet
         self.description = description
         self.section = section
-
