@@ -1,4 +1,4 @@
-source venv/bin/activate
-rm -rf python_recipe.sqlite
-python db_create.py
-python main.py
+python3 create_index.py
+cp index.json public/data.json
+cp index.json build/data.json
+npm run start

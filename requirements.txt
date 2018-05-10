@@ -1,8 +1,0 @@
-flask
-flask_bootstrap
-flask_moment
-flask_sqlalchemy
-flask_wtf
-gunicorn
-Whoosh
-blinker
