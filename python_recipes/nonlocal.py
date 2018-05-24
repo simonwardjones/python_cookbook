@@ -99,6 +99,7 @@ print()
 
 # The nonlocal a variable refers to the variable defined in the
 # local f function scope (more generally one level above)
+# nonloal can not be used to refer to module level variable
 
 
 # Example 4) A more complex example
