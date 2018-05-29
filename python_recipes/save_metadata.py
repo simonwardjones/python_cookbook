@@ -1,25 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Python metadata tricks
-
-This module contains quick recipes to add metadata information to files,
-so they can be easily summarised, ie: latest version, contents, ways of generating
-or ways of using it.
-
-Example:
-    shortDescription = 'CatBoost model'
-    fileComments     = '''This file includes a catboost model to predict the number of coffees that the Data Science team consumes in a week'''
-    fileGeneration   = 'File generated with ' + os.path.abspath(__file__) + '(the script)'
-    fileDirections   = '''This pickle file will get loaded as a dataframe of size ''' + \
-    str(model.shape) + \
-    '''. Read this data with utils.readPickleFile(current_model);'''
-    filePath = current_model
-
-    saveMetadata(filePath, shortDescription, fileComments, \
-        fileGeneration, fileDirections)
-
-"""
-
-
 """
 Section:
     Reading and Writing
@@ -31,17 +9,6 @@ Description:
     Add metadata information to files, so they can be easily summarised, ie: latest version, contents, ways of generating
     or ways of using it.
 
-    shortDescription = 'CatBoost model'
-    fileComments     = '''This file includes a catboost model to predict the number of coffees that the Data Science team consumes in a week'''
-    fileGeneration   = 'File generated with ' + os.path.abspath(__file__) + '(the script)'
-    fileDirections   = '''This pickle file will get loaded as a dataframe of size ''' + \
-    str(model.shape) + \
-    '''. Read this data with utils.readPickleFile(current_model);'''
-    filePath = current_model
-
-    saveMetadata(filePath, shortDescription, fileComments, \
-        fileGeneration, fileDirections)
-
 Tags:
     write, metadata, json
 """
@@ -51,8 +18,8 @@ import json
 import datetime as dt
 
 
-def save_metadata(file_path, short_description, file_comments, \
-    file_generation, file_directions):
+def save_metadata(file_path, short_description, file_comments,
+                  file_generation, file_directions):
     """Save file meta information
 
     Add useful information about the file as a json summary.
@@ -70,12 +37,12 @@ def save_metadata(file_path, short_description, file_comments, \
 
     """
 
-    stat_info      = os.stat(file_path)
-    size_MB        = round(statinfo.st_size/(10**6))
+    stat_info = os.stat(file_path)
+    size_MB = round(statinfo.st_size / (10**6))
     [fPath, fName] = os.path.split(file_path)
 
-    format         = '%d_%m_%Y_%H_%M_%S'
-    creation_time  = dt.datetime.today().strftime(format);
+    format = '%d_%m_%Y_%H_%M_%S'
+    creation_time = dt.datetime.today().strftime(format)
 
     metadata = {'description': short_description,
                 'comments': file_comments,
@@ -89,3 +56,18 @@ def save_metadata(file_path, short_description, file_comments, \
     jsonFName = file_path.replace(os.path.splitext(fName)[1], '.json')
     with open(jsonFName, 'w') as outfile:
         json.dump(metadata, outfile)
+
+
+"""
+Example:
+    shortDescription = 'CatBoost model'
+    fileComments     = '''This file includes a catboost model to predict the number of coffees that the Data Science team consumes in a week'''
+    fileGeneration   = 'File generated with ' + os.path.abspath(__file__) + '(the script)'
+    fileDirections   = '''This pickle file will get loaded as a dataframe of size ''' + \
+    str(model.shape) + \
+    '''. Read this data with utils.readPickleFile(current_model);'''
+    filePath = current_model
+
+    saveMetadata(filePath, shortDescription, fileComments, \
+        fileGeneration, fileDirections)
+"""
