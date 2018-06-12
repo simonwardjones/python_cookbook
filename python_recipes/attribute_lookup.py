@@ -16,7 +16,7 @@ Tags:
 # A data descriptor has the __get__ and at
 # least one of __set__ or __delete__
 
-class mood():
+class Mood():
     """ descriptor"""
     def __get__(self, instance, owner):
         print(f'__get__ called with self, instance, owner ='
@@ -46,7 +46,7 @@ class Age():
 class Human():
     lung_count = 2
     age = Age()
-    mood = mood()
+    mood = Mood()
     def __init__(self, name, age):
         self.name = name
         self.age = age
