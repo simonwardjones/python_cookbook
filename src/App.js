@@ -39,8 +39,8 @@ class App extends React.Component {
   }
 
   hasRecipesToDisplay = () => {
-   return !(Object.keys(this.state.filteredRecipes).length === 0 
-    && this.state.filteredRecipes.constructor === Object)
+   return !(Object.keys(this.state.data).length === 0
+    && this.state.data.constructor === Object)
   }
 
   render(){
@@ -56,9 +56,11 @@ class App extends React.Component {
         onFilterTextChange={this.handleSearchChange}/>
       </div>)
       : (
-      // to see this load set class name to temp for a flash of red
-      <div className=""></div>
-)
+      // to see this loading screen set class name to temp for a flash of red
+      <div>
+        <Header />
+        <div className=""></div>
+      </div>)
     }
     </div>
   )

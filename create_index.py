@@ -24,6 +24,7 @@ for file in os.listdir(PYTHON_RECIPE_FOLDER):
 
         if doc:
             # First get tags
+            # DOTALL matches all including \n!
             tag_results = re.findall(
                 r"tags:[\t\s\n]+(.*?)(?:\n\s*\n|\Z)",
                 doc,
@@ -32,7 +33,7 @@ for file in os.listdir(PYTHON_RECIPE_FOLDER):
                 tags = [x.lower().strip()
                         for x in re.split('\n|,', tag_results[0].strip())]
 
-            # Now the Description
+            # Now the Description the regexp finds everythin
             description = re.findall(
                 r"description:[\t\s\n]+(.*?)(?:\n\s*\n|\Z)",
                 doc,

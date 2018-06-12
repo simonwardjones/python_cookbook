@@ -17,12 +17,18 @@ import time
 class Timer:
 
     def __init__(self):
-        self.start = time.time()
-        self.end = time.time()
+        self.start_time = time.time()
+        self.end_time = time.time()
         self._is_running = False
 
     def start_timer(self):
-        """restarts the time
+        """starts/restarts the time
+        """
+        self.start = time.time()
+        self._is_running = True
+
+    def start(self):
+        """starts/restarts the time
         """
         self.start = time.time()
         self._is_running = True
@@ -30,7 +36,9 @@ class Timer:
     def reset(self):
         """reset the time
         """
-        self.end = self.start = time.time()
+        self.start_time = time.time()
+        self.end_time = time.time()
+        self._is_running = False
 
     def stop(self):
         """stop the current time
@@ -39,15 +47,17 @@ class Timer:
             self.end = time.time()
         else:
             print("Can't Stop until you start")
+        self._is_running = False
 
     def get_time(self):
         '''
-        Returns the time elapsed (Stops the counter).
+        Returns the time elapsed (Stops the counter if running).
 
         Returns:
             TYPE: string
         '''
-        self.stop()
+        if self._is_running:
+            self.stop()
         return self.end - self.start
 
     def get_elapsed(self):

@@ -1,12 +1,11 @@
 .tag {
 	margin-right: 5px;
-	float: right;
 }
 
 .btn-copy {
 	position: absolute;
-    right: 30px;
-    top: 35px;
+    right: 15px;
+    top: 15px;
     padding: 5px;
     background-color: #fff;
     width: 30px;
@@ -15,4 +14,9 @@
 
 pre {
     white-space: "pre-wrap"; 
+    font-size: 0.8em;
+}
+
+.relative {
+    position: relative;
 }

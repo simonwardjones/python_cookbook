@@ -29,11 +29,7 @@ class searchResults extends React.Component {
       
       <Row>
         <Col>
-        <Card>
-        <CardBody>
           {sectioned_results}
-        </CardBody>
-        </Card>
         </Col>
       </Row>
       <Row  className="footer"></Row>
