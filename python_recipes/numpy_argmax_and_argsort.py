@@ -67,7 +67,7 @@ print(f'Top three indicies per row sorted_indices[:, -3:]: \n '
 # the row and colum index arrays are broadcast to be the same shape!
 # (3,3). We want the rows to be broadcast across ie.e have
 # shape (3,1)
-top_3_per_row = matrix[np.arange(matrix.shape[0])[None, :],
-                       top_3_per_row_indexes]
+top_3_per_row = matrix[np.arange(matrix.shape[0])[:, None],
+                       top_3_per_row_indexes][:,::-1]
 
 print(f'Top 3 per row:\n {top_3_per_row}')
