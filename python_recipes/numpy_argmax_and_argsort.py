@@ -57,9 +57,9 @@ sorted_indices = np.argsort(matrix, axis=1)
 
 print(f'Indicies to sort rows np.argsort(matrix, axis=1):\n {sorted_indices}')
 
-top_3_per_row_indexes = sorted_indices[:, -3:]
+top_3_per_row_indexes = sorted_indices[:, :-4:-1]
 
-print(f'Top three indicies per row sorted_indices[:, -3:]: \n '
+print(f'Top three indicies per row sorted_indices[:, :-4:-1]: \n '
       f'{top_3_per_row_indexes}')
 
 
@@ -68,6 +68,6 @@ print(f'Top three indicies per row sorted_indices[:, -3:]: \n '
 # (3,3). We want the rows to be broadcast across ie.e have
 # shape (3,1)
 top_3_per_row = matrix[np.arange(matrix.shape[0])[:, None],
-                       top_3_per_row_indexes][:,::-1]
+                       top_3_per_row_indexes]
 
 print(f'Top 3 per row:\n {top_3_per_row}')
