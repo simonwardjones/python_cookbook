@@ -160,5 +160,5 @@ build-run: ## @@Development Create index and copy into app directory then run de
 skinny-sync-aws: confirm ## @@Development Replace the json index in aws
 	. skinny_sync_aws.sh
 
-sync-aws: confirm ## @@Development Replace the json index in aws
+sync-aws: confirm ## @@Development Replace the json index in aws and app code
 	. sync_aws.sh
