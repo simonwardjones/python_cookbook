@@ -1,8 +1,10 @@
 # Python Cookbook
 
 
-- run make build to rebuild json index
-- run skinny sync to replace json in aws
+- run `make build-index` to rebuild json index
+- run `make skinny-sync-aws` to replace json in aws s3
+- run `make sync-aws` to replace the json index in aws and app code
+- run `npm run build` to rebuild app dist folder (before sync)
 
 
 web address:
